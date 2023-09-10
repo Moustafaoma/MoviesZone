@@ -1,2 +1,2 @@
 # MovieZone
-Crud operation using .net mvc core
+CRUD operation using .net mvc core
