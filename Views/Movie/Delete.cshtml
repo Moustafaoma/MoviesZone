@@ -1,0 +1,38 @@
+﻿@model Movies;
+@{
+    ViewData["Title"] = Model.Title;
+}
+<div class="row justify-content-between" style="margin-top:61px;">
+    <div class="col-md-3">
+        <img src="data:image\/*;base64,@(Convert.ToBase64String(Model.Poster))" class="img-thumbnail" alt="@Model.Title" />
+    </div>
+    <div class="col-md-7" style="margin-top: 32px;">
+        <div class="d-flex justify-content-between">
+            <h3>@Model.Title</h3>
+            <span style="margin-top:5px;">
+                <i class="bi bi-star-fill text-warning"></i>
+                <span class="text-muted">@Model.Rate.ToString("0.0")</span>
+            </span>
+        </div>
+        <span class="text-muted">
+            <i class="bi bi-calendar"></i>
+            @Model.Year
+        </span>
+        <span class="text-muted" style="margin-left:17px;">
+            <i class="bi bi-film"></i>
+            @Model.genre.Name
+        </span>
+        <p style="margin-top:21px;">@Model.StoryLine</p>
+        <div style="margin-top:71px;" class="alert-danger">
+            <h5>Are you sure you want delete this film...</h5>
+            <form method="post" asp-action="DeleteItem" asp-route-id="@Model.MoviesId" enctype="multipart/form-data">
+                <button type="submit" class="btn btn alert-warning mt-4"><i class="bi bi-check2"></i>Yes</button>
+                <a asp-action="Index" class="btn btn-outline-dark mt-4">
+                    <i class="bi bi-x-circle"></i>
+                    Cancel
+                </a>
+            </form>
+        </div>
+    </div>
+   
+</div>
